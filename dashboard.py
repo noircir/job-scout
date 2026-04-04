@@ -234,7 +234,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
     <span class="port">:8502</span>
   </div>
   <nav>
-    <a href="http://localhost:8501">:8501 listings</a>
+    <a href="http://localhost:8501">:8501</a>
     <a href="#" class="active">:8502 jobs</a>
     <a href="#">:8503</a>
     <a href="#">:8504</a>
