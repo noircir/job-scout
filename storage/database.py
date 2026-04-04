@@ -78,17 +78,20 @@ def get_unscored_postings():
     return rows
 
 
+# NOTE: If adding --rescore, carry over starred/notes from the previous row for this posting_id
 def add_score(posting_id, score, hard_constraint_pass, flags=None,
-              reasoning=None, application_angle=None):
+              reasoning=None, application_angle=None, skill_gaps=None):
     conn = get_connection()
     conn.execute(
         """INSERT INTO scores
            (posting_id, score, hard_constraint_pass, flags, reasoning,
-            application_angle, date_scored)
-           VALUES (?, ?, ?, ?, ?, ?, ?)""",
+            application_angle, skill_gaps, date_scored)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
         (posting_id, score, hard_constraint_pass,
          json.dumps(flags) if flags else None,
-         reasoning, application_angle, datetime.now().isoformat())
+         reasoning, application_angle,
+         json.dumps(skill_gaps) if skill_gaps else None,
+         datetime.now().isoformat())
     )
     conn.commit()
     conn.close()

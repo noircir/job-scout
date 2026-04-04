@@ -153,6 +153,7 @@ def main():
                 flags=result.get("flags"),
                 reasoning=result.get("reasoning"),
                 application_angle=result.get("application_angle"),
+                skill_gaps=result.get("skill_gaps"),
             )
 
             scored_results.append({
@@ -178,6 +179,7 @@ def main():
                 flags=result.get("flags"),
                 reasoning=result.get("reasoning"),
                 application_angle=result.get("application_angle"),
+                skill_gaps=result.get("skill_gaps"),
             )
 
             scored_results.append({

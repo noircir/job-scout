@@ -115,6 +115,14 @@ irrelevant postings before any API call is made, and batch mode reduces
 costs further for scheduled runs. The monthly API cost for daily scanning
 across all sources is negligible.
 
+## Dashboard
+
+```bash
+python dashboard.py
+```
+
+Opens at localhost:8502. Filters by date, score, and source. Star postings and add notes. The static HTML digest (`digest/build_digest.py`) still works as a standalone fallback.
+
 ## What this is not
 
 This is not a job application bot. It does not auto-apply, submit resumes, or interact with job boards on anyone's behalf. It reads and filters. The human still decides what to apply to, reviews the tailored resume, and submits applications.
