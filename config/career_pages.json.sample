@@ -1,0 +1,27 @@
+{
+  "_comment": "Company career pages organized by ATS type. Add companies by finding their ATS board token.",
+
+  "greenhouse": {
+    "_comment": "Greenhouse public JSON API: boards-api.greenhouse.io/v1/boards/{board_token}/jobs",
+    "companies": [
+      {"name": "Stripe", "board_token": "stripe"},
+      {"name": "Datadog", "board_token": "datadog"},
+      {"name": "Cloudflare", "board_token": "cloudflare"}
+    ]
+  },
+
+  "ashby": {
+    "_comment": "Ashby public JSON API: api.ashbyhq.com/posting-api/job-board/{board_token}",
+    "companies": [
+      {"name": "Notion", "board_token": "notion"},
+      {"name": "Ramp", "board_token": "ramp"}
+    ]
+  },
+
+  "lever": {
+    "_comment": "Lever public JSON API: api.lever.co/v0/postings/{board_token}?mode=json",
+    "companies": [
+      {"name": "Netflix", "board_token": "netflix"}
+    ]
+  }
+}

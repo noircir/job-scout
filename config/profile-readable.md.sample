@@ -1,0 +1,118 @@
+# Candidate Profile (Human-Readable)
+
+This is the plain-English version of `profile.json`. Both files should stay in sync. The JSON is what the agent reads; this is for you to review and edit.
+
+---
+
+## Identity
+
+- **Name:** Jane Doe
+- **Location:** Your City, State/Province, Country
+- **Timezone:** America/New_York
+- **Website:** https://your-website.com
+- **GitHub:** https://github.com/your-username
+- **LinkedIn:** https://www.linkedin.com/in/your-profile/
+
+---
+
+## Hard Constraints
+
+These are automatic disqualifiers. Any job that fails ANY of these gets a score of 0.
+
+- **Remote only.** Exception: hybrid is acceptable for [your city] roles at large companies. No relocation.
+- **Salary floor:** $XXX,XXX USD / $XXX,XXX CAD (adjust to your numbers)
+- **Seniority:** Intermediate and senior only. Reject intern, co-op, and entry-level.
+- **Disqualifying keywords:** "on-site required", "relocation required", "intern", [add your own]
+- **Disqualifying role types:** Role Type A (reason it doesn't fit), Role Type B (reason), [add your own]
+
+---
+
+## Language Flag
+
+If you speak a second language, configure how the agent treats roles requiring it. Example: French is an asset, not a liability. Only flag if a role requires native-level technical writing beyond your proficiency.
+
+---
+
+## Security Clearance Flag
+
+Configure based on your citizenship and clearance eligibility:
+
+- **Clearance obtainable in your country** -> score normally
+- **Allied nation clearance** -> flag, don't reject
+- **Foreign clearance requiring citizenship you don't have** -> hard reject
+
+---
+
+## Work Authorization (US)
+
+The agent understands these scenarios for non-US remote workers:
+
+- **1099 contractor** -> score normally. No work auth needed.
+- etc.
+- **Boilerplate rule:** "Must be authorized to work in the US" is often HR boilerplate. Never auto-reject on that phrase alone.
+
+---
+
+## Relocation Plan (Optional)
+
+If you plan to relocate, configure the agent to boost roles in your target region:
+
+- Companies in your target country: highest priority
+- Same-timezone roles: also valuable
+- Remote jobs from your current country also work from the target country
+- Remove this section if you have no relocation plans
+
+---
+
+## Preferences (Weighted Scoring Signals)
+
+These don't disqualify but affect the score. Higher weight = more impact.
+
+**Strong positives (weight 2-3):**
+- Direct match to your primary skill area (weight 3)
+- Pays in preferred currency (weight 2)
+- Remote-first company culture (weight 2)
+- [add your own signals with weights]
+
+**Mild positives:**
+- Open-source friendly
+- Technical blog culture
+- [add your own]
+
+**Negatives:**
+- Requires skills outside your core strength (weight -1)
+- Heavy focus on tools you haven't used in production (weight -2)
+- [add your own with weights]
+
+**Work style note:** Customize the negatives to match what you want to avoid. The weights are relative, not absolute.
+
+---
+
+## Target Roles
+
+**Ideal titles:** [Your ideal title 1], [Your ideal title 2], [Your ideal title 3]
+
+**Acceptable titles:** [Your acceptable title 1], [Your acceptable title 2]
+
+**Avoid titles:** [Title you don't want 1], [Title you don't want 2]
+
+---
+
+## Skills for Matching
+
+**Strong match:** [Your core skill 1], [Your core skill 2], [Your core skill 3]
+
+**Working knowledge:** [Skill you can use but don't lead with 1], [Skill 2]
+
+**Not claimed:** [Skill jobs often require that you don't have 1], [Skill 2]
+
+---
+
+## Experience Summary
+
+- **Years in IT:** X+
+- **Years in AI/ML:** X+
+- **Years LLM-specific:** X+
+- **Current role:** Your Title at Your Company. Brief description.
+- **Highlight projects:** List 2-4 projects with concrete numbers
+- **Notable background:** Previous roles, degrees, certifications

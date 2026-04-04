@@ -1,0 +1,7 @@
+anthropic
+httpx
+playwright
+beautifulsoup4
+lxml
+sqlite-utils
+python-dotenv

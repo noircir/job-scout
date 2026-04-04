@@ -1,0 +1,36 @@
+# Private config — real profile and resume
+config/profile.json
+config/profile-readable.md
+config/career_pages.json
+docs/
+resume/master-resume.md
+resume/jd-*.txt
+resume/tailored/
+
+# Storage
+storage/jobs.db
+storage/digest*.html
+storage/cron.log
+
+# Virtual environment
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment / API keys
+.env
+.anthropic_key
+
+# Claude Code
+.claude/
+PROJECT_RULES.md
+
+# Playwright browsers
+playwright-browsers/
+
+# OS files
+.DS_Store

@@ -1,0 +1,231 @@
+{
+  "meta": {
+    "version": "1.0",
+    "last_updated": "2026-01-01",
+    "description": "Master profile for job search agent. Claude reads this + a job description and returns a match score 1-10 with reasoning."
+  },
+
+  "identity": {
+    "name": "Jane Doe",
+    "location": "Your City, State/Province, Country",
+    "timezone": "America/New_York",
+    "site": "https://your-website.com",
+    "github": "https://github.com/your-username",
+    "linkedin": "https://www.linkedin.com/in/your-profile/"
+  },
+
+  "hard_constraints": {
+    "_comment": "Any job that fails ANY of these is an automatic 0, no matter how good the rest looks.",
+    "remote_only": true,
+    "salary_floor_usd": 0,
+    "_salary_note": "Set your minimum acceptable salary. Use 0 to disable salary filtering.",
+    "salary_floor_cad": 0,
+    "seniority_minimum": "intermediate",
+    "seniority_note": "Intermediate and senior roles are both fine. Only reject intern, co-op, and entry-level.",
+    "disqualifying_keywords": [
+      "on-site required",
+      "relocation required",
+      "intern",
+      "add your own"
+    ],
+    "disqualifying_role_types": [
+      "Role you want to avoid 1 (reason it doesn't fit your profile)",
+      "Role you want to avoid 2 (reason)",
+      "add your own"
+    ]
+  },
+
+  "security_clearance_flag": {
+    "_comment": "Configure based on your citizenship and clearance eligibility. Remove this section if not applicable.",
+    "action": "flag_not_reject",
+    "scenarios": [
+      {
+        "type": "Clearance obtainable in your country",
+        "action": "score_normally",
+        "note": "Obtainable for residents. Defense contractors are valid targets."
+      },
+      {
+        "type": "Allied nation clearance",
+        "action": "flag_not_reject",
+        "note": "Worth exploring. Flag and surface if role otherwise matches."
+      },
+      {
+        "type": "Foreign clearance requiring citizenship you don't have",
+        "action": "hard_reject",
+        "note": "Not obtainable. Only reject this level."
+      }
+    ]
+  },
+
+  "relocation_flag": {
+    "_comment": "If you plan to relocate to another country, configure how the agent should boost roles in that region. Remove this section if not applicable.",
+    "action": "boost_and_flag",
+    "flag_text": "Relocation-aligned: supports your move plan",
+    "notes": [
+      "Companies in your target country: highest priority. Flag positively in digest.",
+      "Other roles in the same timezone region: also valuable.",
+      "Remote jobs from your current country also work from the target country.",
+      "Adjust these notes to match your specific relocation plans and timeline."
+    ]
+  },
+
+  "foreign_work_authorization": {
+    "_comment": "Work authorization scenarios for remote workers outside the target country. Adjust for your situation or remove if not applicable.",
+    "scenarios": [
+      {
+        "type": "Contractor invoicing from your country",
+        "action": "score_normally",
+        "note": "No foreign work auth needed. Invoice in local or foreign currency."
+      },
+      {
+        "type": "EOR in your country on behalf of foreign company",
+        "action": "score_normally",
+        "note": "Deel, Remote.com, Oyster etc. handle employment locally."
+      },
+      {
+        "type": "Foreign country residency required",
+        "action": "flag_not_reject",
+        "note": "Flag it. May be flexible for contractors."
+      }
+    ]
+  },
+
+  "work_authorization": {
+    "_comment": "US work auth is nuanced for non-US remote workers. The agent must understand these scenarios, not blindly reject on boilerplate language.",
+    "scenarios": [
+      {
+        "type": "1099 contractor",
+        "description": "Candidate invoices the company directly, handles own taxes.",
+        "action": "score_normally",
+        "needs_work_auth": false
+      },
+    ],
+    "boilerplate_rule": "Many postings say 'must be authorized to work in the US' as HR boilerplate even for roles that would happily hire a foreign contractor. Never auto-reject on that phrase alone. Surface the job if it scores well and flag the question."
+  },
+
+  "preferences": {
+    "_comment": "These don't disqualify but affect the score. Higher weight = more impact on score.",
+    "strong_positives": [
+      {
+        "signal": "Direct match to your primary skill area",
+        "weight": 3,
+        "reason": "Core differentiator. The closer the role matches your top skills, the higher the score."
+      },
+      {
+        "signal": "Pays in your preferred currency",
+        "weight": 2,
+        "reason": "Geographic arbitrage or financial preference."
+      },
+      {
+        "signal": "Remote-first company culture",
+        "weight": 2,
+        "reason": "Not just 'remote allowed' but built around remote."
+      },
+      {
+        "signal": "Your signal here",
+        "weight": 0,
+        "reason": "Add your own scoring signals with appropriate weights."
+      }
+    ],
+    "mild_positives": [
+      "Open-source friendly",
+      "Technical blog culture",
+      "Add your own"
+    ],
+    "negatives": [
+      {
+        "signal": "Requires skills outside your core strength",
+        "weight": -1,
+        "reason": "Can use but not operate at the level they need."
+      },
+      {
+        "signal": "Heavy focus on tools you haven't used in production",
+        "weight": -2,
+        "reason": "Academic knowledge only, not production experience."
+      },
+      {
+        "signal": "Add your own",
+        "weight": -1,
+        "reason": "Describe why this is a negative signal for you."
+      }
+    ]
+  },
+
+  "target_roles": {
+    "ideal_titles": [
+      "Your ideal title 1",
+      "Your ideal title 2",
+      "Your ideal title 3"
+    ],
+    "acceptable_titles": [
+      "Your acceptable title 1",
+      "Your acceptable title 2"
+    ],
+    "avoid_titles": [
+      "Title you want to avoid 1",
+      "Title you want to avoid 2"
+    ]
+  },
+
+  "skills_for_matching": {
+    "_comment": "Agent uses these to check overlap with job description requirements. Replace with your own skills.",
+    "strong_match": [
+      "Your core skill 1",
+      "Your core skill 2",
+      "Your core skill 3"
+    ],
+    "working_knowledge": [
+      "Skill you can use but don't lead with 1",
+      "Skill you can use but don't lead with 2"
+    ],
+    "not_claimed": [
+      "Skill jobs often require that you don't have 1",
+      "Skill jobs often require that you don't have 2"
+    ]
+  },
+
+  "experience_summary": {
+    "_comment": "Short version for the agent to reference when scoring. Not the full resume.",
+    "years_in_it": "X+",
+    "years_in_ai_ml": "X+",
+    "years_llm_specific": "X+",
+    "current_role": "Your Title at Your Company, City. Brief description of what you built.",
+    "highlight_projects": [
+      "Built production ML pipeline processing X records across Y GPUs",
+      "Designed and deployed Z system handling A scale",
+      "Your most impressive project with concrete numbers"
+    ],
+    "notable_background": [
+      "Previous notable role or company",
+      "Relevant degree or certification",
+      "Other credential that strengthens your profile"
+    ],
+    "blog_posts": [
+      "Your blog post title 1",
+      "Your blog post title 2"
+    ]
+  },
+
+  "scoring_instructions": {
+    "_comment": "These tell the OpenAI API call how to score each job.",
+    "system_prompt": "You are a job matching agent. You receive a candidate profile and a job description. Score the match 1-10 and explain why. Be ruthless about hard constraints — any failure is a 0. Be honest about skill gaps. Prefer false negatives (missing a decent job) over false positives (surfacing bad matches that waste the candidate's time).",
+    "score_thresholds": {
+      "surface_to_candidate": 7,
+      "auto_dismiss": 4,
+      "needs_review": "5-6"
+    },
+    "output_format": {
+      "score": "integer 0-10",
+      "hard_constraint_pass": "boolean",
+      "hard_constraint_failures": "list of failed constraints, if any",
+      "title_match": "ideal / acceptable / poor / avoid",
+      "skill_overlap_pct": "estimated percentage of required skills matched",
+      "skill_gaps": "list of required skills not in profile",
+      "positives": "list of matching preference signals",
+      "negatives": "list of matching negative signals",
+      "salary_estimate": "if posted, or 'not listed'",
+      "reasoning": "2-3 sentence explanation",
+      "application_note": "specific angle to emphasize if applying"
+    }
+  }
+}
